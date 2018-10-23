@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title></title>
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="/static/style.css" type="text/css"/>
+    <link href="/static/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    {# Navigation #}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">EQSCISearch</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="http://www.fjdzj.gov.cn/">关于我们<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">链接</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">我是链接</a>
+          <a class="dropdown-item" href="#">我是第二个链接</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">这里是第三个</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">未接入系统</a>
+      </li>
+    </ul>
+    <form action="/search" method="get" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+    </form>
+  </div>
+</nav>
+
+    <div class="container">
+        {% block body %}{% endblock %}
+        <div class="row justify-content-center col-12 col-md-12" style="margin-top:200px">
+            <div class="row justify-content-center col-12 col-md-12">
+                <img src="http://sc.fjdzj.gov.cn/skin/government/images/logo.png" height="80px" >
+            </div>
+            <div class="row justify-content-center col-12 col-md-12">
+                <form class="tsf col-12 col-md-8" action="/search" method="get">
+                      <div class="form-row justify-content-center">
+                          <input class="form-control"  name="q" type="text" placeholder="关键字在这里～～">
+                      </div>
+                      <div class="form-row justify-content-center qbtn">
+                          <button aria-label="EQSCISearch" type="submit" class="btn btn-outline-primary" >地震科技数据搜索</button>
+                      </div>
+                </form>
+            </div>
+            <a href="http://manu32.magtech.com.cn/JournalX_geophy/Login.action" target="_blank">
+			<img src="http://manu32.magtech.com.cn/JournalX_geophy/images/login/1.jpg" width="100px"
+			 alt="sorry cannot find images">
+                 <a href="https://link.springer.com/journal/11803" target="_blank">
+                <img src="https://static-content.springer.com/cover/journal/11803/17/3.jpg"
+                                                 width="100px" style="margin-left:50px" >
+                 </a>
+                <a href="http://zgdz.eq-j.cn/zgdz/ch/index.aspx" target="_blank">
+                <img src="http://zgdz.eq-j.cn/config/cover/zgdz/2018_2_small.jpg"
+                                                 width="100px" style="margin-left:50px" >
+                </a>
+                <a href="https://www.nature.com/" target="_blank">
+                <img src="https://media.springernature.com/w300/springer-static/cover-hires/journal/41586/561/7724"
+
+                                                 width="100px" style="margin-left:50px" >
+                </a>
+                <a href="http://www.sciencemag.org">
+                <img src="https://www.sciencemag.org/sites/default/files/highwire/covers/sci/361/6408/-F1.medium.gif"
+                                                 width="100px" style="margin-left:50px" >
+                </a>
+		    </a>
+        </div>
+      </div>
+      {% block bottom %}{% endblock %}
+    </div>
+<div class="fixed-bottom">
+  {% block footer %}
+    {% include "footer.html" %}
+  {% endblock %}
+</div>
+  {% block afterscript %}{% endblock %}
+  </body>
+</html>

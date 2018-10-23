@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title></title>
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="/static/style.css" type="text/css"/>
+    <link href="/static/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    {# Navigation #}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">EQSCISearch</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form action="/search" method="get" class="form-inline my-2 my-lg-0">
+      <input name = "q" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+    </form>
+  </div>
+</nav>
+
+    <div class="container">
+        {% block body %}{% endblock %}
+        <div class="row  col-12 col-md-12" style="margin-top:20px">
+            <div class="row col-8 col-md-8">
+                <nav aria-label="Page navigation example">
+<ul class="list-unstyled">
+  {% for item in search %}
+  <li class="media my-4">
+         数据编号：{{ item.id}}，数据名称：{{ item.eqDataAcWay}},数据内容：{{ item.ObDataDesc }},obs内容：{{ item.staDataFile }}
+         数据格式：{{ item.netDataFile}}，数据采样率：{{ item.sampRate}},震源类型：{{ item.PsDataDesc}}
+      <img class="mr-3 " src="/static/2.png" width="400px">
+  </li>
+  {% endfor %}
+  <li class="media my-4">
+    <img class="mr-3 " src="http://sc.fjdzj.gov.cn/skin/government/images/logo.png" width="300px">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">地震科技数据库</h5>
+        致力与提供更好的数据服务，共享大数据时代科技的便利！！！！
+    </div>
+  </li>
+</ul>
+                </nav>
+            </div>
+            <div class="col-4 col-md-4 px-5">
+                <a href="#">需要添加的服务及内容请致电？</a>
+                咨询热线:18850070009
+            </div>
+        </div>
+      </div>
+      {% block bottom %}{% endblock %}
+    </div>
+<div class="">
+  {% block footer %}
+    {% include "footer.html" %}
+  {% endblock %}
+</div>
+  {% block afterscript %}{% endblock %}
+  </body>
+</html>
